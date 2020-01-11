@@ -36,6 +36,7 @@ if (nodeVersion.major < 6) {
 args.option('pre', 'Mark the release as prerelease')
 	.option('overwrite', 'If the release already exists, replace it')
 	.option('publish', 'Instead of creating a draft, publish the release')
+	.option('webext-dir', 'Update web extension version number')
 	.option(['H', 'hook'], 'Specify a custom file to pipe releases through')
 	.option(['t', 'previous-tag'], 'Specify previous release', '')
 	.option(['u', 'show-url'], 'Show the release URL instead of opening it in the browser');
@@ -413,7 +414,7 @@ const main = async () => {
 			);
 		}
 
-		await bumpVersion(type, bumpType[1]);
+		await bumpVersion(type, bumpType[1], flags.webextDir);
 	}
 
 	checkReleaseStatus();
